@@ -1,0 +1,136 @@
+body {
+  overflow-x: hidden;
+
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.content {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 60px 30px 30px;
+}
+
+.forms-vuelos-hoteles {
+  justify-content: space-evenly;
+}
+
+form input {
+  height: 38px;
+}
+
+.alert-dismissible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  padding: 10px 0 10px 0;
+}
+
+.alert-dismissible button {
+  background: none;
+  font-size: 22px;
+  border: none;
+  padding-bottom: 3px;
+}
+
+tr:hover {
+  background: #e6e6e6
+}
+
+tr:nth-child(2n) {
+  background: #00506826;
+}
+
+.table-responsive {
+  width: 100%;
+}
+
+.btn-info {
+
+  background: #0e85a9;
+  border: none;
+  color: white;
+
+}
+
+.btn-info:hover {
+  background: #0c6b88;
+  color: white;
+}
+
+.navbar-toggler-icon {
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.card {
+  margin: 20px 0;
+}
+
+.inicio-form {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #0c6b88;
+  fill: #0c6b88;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+svg {
+  font-size: 21px;
+  margin: 0 9px;
+}
+
+.inicio-form h2 {
+  font-size: 21px;
+  margin-bottom: 0;
+}
+
+.btn-success {
+  margin-top: 20px;
+}
+
+input {
+  margin: 5px 0;
+}
+
+.form-edit {
+  padding-top: 50px;
+}
+
+.img-hotel {
+  width: 100%;
+}
+
+footer {
+  position: relative;
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  margin-top: 30px;
+  left: 0px;
+  right: 0px;
+}
+
+.banner-home{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-home h1{
+  position: absolute;
+  color: white;
+  font-size: 60px;
+}
+
+.banner-img {
+  width: 100%;
+  object-fit: cover;
+ height: 100vh;
+}

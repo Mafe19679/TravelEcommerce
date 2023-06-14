@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:700|Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6ceb67ac81.js" crossorigin="anonymous"></script>
+    <title>Mi sitio web</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<style>
+    form input {
+        height: 38px;
+    }
+</style>
+
+<body>
+
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg"
+        style="background-color: #004c63; position: fixed; width: 100%; z-index: 100; ">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="/">Inicio</a>
+            <button class="navbar-toggler text-white" style="border: none; color: white;" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="../activarServicios/">Activar
+                            servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="../reservas/">Reservar</a>
+                    </li>
+
+
+                </ul>
+                <form class="d-flex" role="search" style="align-items: center;">
+
+                    <input class="form-control me-2" style="height: 30px;" type="search" placeholder="Buscar"
+                        aria-label="Search">
+                    <button class="btn btn-outline-info d-flex" type="submit"
+                        style="align-items: center; background: white; fill: #004c63;"><svg
+                            style="width: 15px; color:white;" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                        </svg></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Fin menu -->
+
+
+
+
+    <div class="content">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 row" style="justify-content: center; margin: 0;">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong class="text-dark">{{ message }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="col-12 col-md-6 row" style="justify-content: space-evenly;">
+                <div class="" style="padding: 10px; border: none;">
+                    <div style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                        <div class="inicio-form">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
+                                viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                <path
+                                    d="M381 114.9L186.1 41.8c-16.7-6.2-35.2-5.3-51.1 2.7L89.1 67.4C78 73 77.2 88.5 87.6 95.2l146.9 94.5L136 240 77.8 214.1c-8.7-3.9-18.8-3.7-27.3 .6L18.3 230.8c-9.3 4.7-11.8 16.8-5 24.7l73.1 85.3c6.1 7.1 15 11.2 24.3 11.2H248.4c5 0 9.9-1.2 14.3-3.4L535.6 212.2c46.5-23.3 82.5-63.3 100.8-112C645.9 75 627.2 48 600.2 48H542.8c-20.2 0-40.2 4.8-58.2 14L381 114.9zM0 480c0 17.7 14.3 32 32 32H608c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32z" />
+                            </svg>
+                            <h2>Reservar Vuelos</h2>
+                        </div>
+                        <div class="card-body">
+                            <form action="/registrarReservaVuelo/" method="POST">{% csrf_token %}
+                                <div class="form-group">
+                                    <label for="FormControlInput">Cedula Cliente</label>
+                                    <input type="text" id="cedulaClienteReservaVuelo" name="cedulaClienteReservaVuelo"
+                                        class="form-control" placeholder="Cedula Cliente" maxlength="50" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="FormControlInput">Cantidad personas</label>
+                                    <input type="number" id="cantidadPersonasReservaVuelo"
+                                        name="cantidadPersonasReservaVuelo" class="form-control"
+                                        placeholder="Cantidad Personas" maxlength="50" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="FormControlInput">Vuelo</label>
+                                    <input type="text" id="IDVueloReservaVuelo" name="IDVueloReservaVuelo"
+                                        class="form-control" placeholder="IDVueloReservaVuelo" maxlength="50" required>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-6" style="padding: 10px; border: none;">
+                <div style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                    <div class="inicio-form">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.25em"
+                            viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M0 32C0 14.3 14.3 0 32 0H480c17.7 0 32 14.3 32 32s-14.3 32-32 32V448c17.7 0 32 14.3 32 32s-14.3 32-32 32H304V464c0-26.5-21.5-48-48-48s-48 21.5-48 48v48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32V64C14.3 64 0 49.7 0 32zm96 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H112c-8.8 0-16 7.2-16 16zM240 96c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H240zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V112c0-8.8-7.2-16-16-16H368c-8.8 0-16 7.2-16 16zM112 192c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V208c0-8.8-7.2-16-16-16H112zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V208c0-8.8-7.2-16-16-16H240c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V208c0-8.8-7.2-16-16-16H368zM328 384c13.3 0 24.3-10.9 21-23.8c-10.6-41.5-48.2-72.2-93-72.2s-82.5 30.7-93 72.2c-3.3 12.8 7.8 23.8 21 23.8H328z" />
+                        </svg>
+                        <h2>Activar Hoteles</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="/registrarReservaHotel/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="txtIDHotel" name="txtIDHotel" class="form-control"
+                                    placeholder="Código" hidden>
+                            </div>
+                            <td>{{i.IDReservaHotel}}</td>
+                            <td>{{i.cedulaClienteReservaHotel}}</td>
+                            <td>{{i.IDHotelReservaHotel}}</td>
+                            <td>{{i.cantidadPersonasReservaHotel}}</td>
+                            <td>{{i.cantidadHabitacionesReservaHotel}}</td>
+                            <div class="form-group">
+                                <label for="FormControlInput">Cedula Cliente</label>
+                                <input type="text" id="cedulaClienteReservaHotel" name="cedulaClienteReservaHotel" class="form-control"
+                                    placeholder="Nombre Hotel" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="FormControlInput">ID Hotel</label>
+                                <input type="text" id="IDHotelReservaHotel" name="IDHotelReservaHotel" class="form-control"
+                                    placeholder="Estrellas Hotel" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="FormControlInput">Cantidad personas</label>
+                                <input type="text" id="cantidadPersonasReservaHotel" name="cantidadPersonasReservaHotel" class="form-control"
+                                    placeholder="Costo Hotel" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="FormControlInput">Cantidad habitaciones</label>
+                                <input type="text" id="cantidadHabitacionesReservaHotel" name="cantidadHabitacionesReservaHotel" class="form-control"
+                                    placeholder="Servicios Hotel" maxlength="50" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <h1>Listado de reservas de vuelos</h1>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Cedula Cliente</th>
+                            <th>Cantidad personas</th>
+                            <th>Vuelo reservado</th>
+
+                            <th colspan="2">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in reservaVuelo%}
+                        <tr>
+                            <td>{{i.IDReservaVuelo}}</td>
+                            <td>{{i.cedulaClienteReservaVuelo}}</td>
+                            <td>{{i.cantidadPersonasReservaVuelo}}</td>
+                            <td>{{i.IDVueloReservaVuelo}}</td>
+
+
+                            <td><a href="edicionReservaVuelo/{{i.IDReservaVuelo}}" class="btn btn-info">Editar</a></td>
+                            <td><a href="eliminarReservaVuelo/{{i.IDReservaVuelo}}"
+                                    class="btn btn-danger btnEliminacion">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <h1>Listado de reservas de hoteles</h1>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cedula cliente</th>
+                        <th>ID Hotel</th>
+                        <th>Cantidad personas</th>
+                        <th>Cantidad habitaciones</th>
+
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in reservaHotel %}
+                    <tr>
+
+                        <td>{{i.IDReservaHotel}}</td>
+                        <td>{{i.cedulaClienteReservaHotel}}</td>
+                        <td>{{i.IDHotelReservaHotel}}</td>
+                        <td>{{i.cantidadPersonasReservaHotel}}</td>
+                        <td>{{i.cantidadHabitacionesReservaHotel}}</td>
+
+                        <td><a href="edicionReservaHotel/{{i.IDReservaHotel}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarReservaHotel/{{i.IDReservaHotel}}"
+                                class="btn btn-danger btnEliminacion">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+
+</html>
+<script src="{% static 'js/gestionForm.js' %}"></script>
+
+<!-- Footer -->
+<footer class=" text-center text-white" style="background-color: #006787;">
+    <div class="text-center p-3" style="background-color: #004c63;">© 2023 Copyright | "La vida es un viaje y quien
+        viaja vive dos veces" - Omar Khayyam</div>
+</footer>
+<!-- Footer -->
